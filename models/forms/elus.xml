@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="details" label="Détails de l'élu">
+        <field
+            name="nom"
+            type="text"
+            label="Nom"
+            required="true"
+        />
+        <field
+            name="prenom"
+            type="text"
+            label="Prénom"
+            required="true"
+        />
+        <field
+            name="poste"
+            type="text"
+            label="Poste"
+            required="true"
+        />
+        <field
+            name="cse_local"
+            type="text"
+            label="Nom du CSE Local"
+        />
+        <field
+            name="email"
+            type="email"
+            label="Email"
+        />
+        <field
+            name="telephone"
+            type="tel"
+            label="Téléphone"
+        />
+    </fieldset>
+</form>

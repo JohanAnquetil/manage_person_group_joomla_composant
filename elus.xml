@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="5.0" method="upgrade">
+    <name>com_elus</name>
+    <version>1.0.0</version>
+    <author>JAn</author>
+    <creationDate>2024-02-19</creationDate>
+    <description>Composant Joomla pour la gestion des élus avec commissions.</description>
+
+    <!-- Déclaration des fichiers et répertoires -->
+    <files>
+        <folder>controllers</folder>
+        <folder>models</folder>
+        <folder>views</folder>
+        <folder>language</folder>
+        <folder>media</folder>
+        <filename>elus.php</filename>
+        <filename>elus.sql</filename>
+    </files>
+
+    <!-- Administration (menu Joomla) -->
+    <administration>
+        <menu link="index.php?option=com_elus&amp;view=elus">Gestion des Élus</menu>
+    </administration>
+
+    <!-- Installation SQL -->
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">elus.sql</file>
+        </sql>
+    </install>
+
+    <!-- Désinstallation propre -->
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">uninstall.sql</file>
+        </sql>
+    </uninstall>
+</extension>
