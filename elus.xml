@@ -1,58 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="5.0" method="upgrade">
     <name>com_elus</name>
-    <version>1.0.4</version>
+    <version>1.0.20</version>
     <author>Johan Anquetil</author>
     <creationDate>2025-02-19</creationDate>
     <description>Composant Joomla pour la gestion des élus avec commissions.</description>
 
-    <!-- Fichiers frontend -->
-    <files folder="site">
-        <folder>controllers</folder>
-        <folder>models</folder>
-        <folder>views</folder>
-        <filename>elus.php</filename>
-    </files>
 
-    <!-- Administration -->
-    <administration>
-        <!-- Fichiers backend -->
-        <files folder="admin">
-            <folder>controllers</folder>
-            <folder>models</folder>
-            <folder>views</folder>
-            <folder>sql</folder>
-            <folder>language</folder>
-            <filename>elus.php</filename>
-        </files>
+    <namespace path="src">Joomla\Component\Elus</namespace>
 
-        <!-- Langues -->
-        <languages folder="admin/language">
-            <language tag="fr-FR">fr-FR/fr-FR.com_elus.ini</language>
-            <language tag="fr-FR">fr-FR/fr-FR.com_elus.sys.ini</language>
-        </languages>
-
-        <!-- Menu principal et sous-menus -->
-        <!-- &amp; -->
-   <menu>COM_ELUS</menu>
-    <submenu>
-        <menu link="index.php?option=com_elus&amp;view=elus">Liste des élus</menu>
-        <menu link="index.php?option=com_elus&amp;task=elu.add">Ajouter un élu</menu>
-        <menu link="index.php?option=com_elus&amp;task=contact">Contact</menu>
-    </submenu>
-
-        <!-- Installation SQL -->
+          <!-- Installation SQL -->
         <install>
             <sql>
-                <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+                <file driver="mysql" charset="utf8">admin/install.mysql.utf8.sql</file>
             </sql>
         </install>
 
         <!-- Désinstallation SQL -->
         <uninstall>
             <sql>
-                <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+                <file driver="mysql" charset="utf8">admin/sql/uninstall.mysql.utf8.sql</file>
             </sql>
         </uninstall>
+
+    <!-- Administration (backend) -->
+    <administration>
+        <!-- Fichiers racine -->
+        <files>
+            <filename>elus.php</filename>
+            <filename>elus.xml</filename>
+            <folder>services</folder>
+            <folder>src</folder>
+            <folder>tmpl</folder>
+            <folder>forms</folder>
+            <folder>sql</folder>
+            <folder>language</folder>
+        </files>
+
+        <!-- Fichiers admin -->
+        <files folder="admin">
+            <filename>install.mysql.utf8.sql</filename>
+        </files>
+
+        <!-- Menu principal -->
+        <menu>COM_ELUS</menu>
+        <submenu>
+            <menu link="option=com_elus&amp;view=elus">Liste des élus</menu>
+            <menu link="option=com_elus&amp;task=elu.add">Ajouter un élu</menu>
+        </submenu>
+
+        <!-- Fichiers de langues -->
+        <languages folder="admin/language">
+            <language tag="fr-FR">fr-FR/fr-FR.com_elus.ini</language>
+            <language tag="fr-FR">fr-FR/fr-FR.com_elus.sys.ini</language>
+        </languages>
     </administration>
 </extension>
