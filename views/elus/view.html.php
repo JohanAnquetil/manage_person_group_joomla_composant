@@ -1,31 +1,30 @@
 <?php
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
-class ElusViewElus extends BaseHtmlView 
-{    
-    public function display($tpl = null) 
+class ElusViewElus extends BaseHtmlView
 {
-    $this->items = $this->get('Items');
-    $this->pagination = $this->get('Pagination');
-    $this->state = $this->get('State');
+    protected $items;
+    protected $pagination;
+    protected $state;
 
-    if (empty($this->items)) {
-        \JFactory::getApplication()->enqueueMessage('Aucun élu trouvé.', 'warning');
+    public function display($tpl = null)
+    {
+        $this->items = $this->get('Items');
+        $this->pagination = $this->get('Pagination');
+        $this->state = $this->get('State');
+
+        $this->addToolbar();
+        parent::display($tpl);
     }
 
-    $this->addToolbar();
-    parent::display($tpl);
-}
-
-
-    protected function addToolbar() 
+    protected function addToolbar()
     {
-        ToolbarHelper::title('Liste des élus');
+        ToolbarHelper::title('Gestion des élus');
         ToolbarHelper::addNew('elu.add');
         ToolbarHelper::editList('elu.edit');
-        ToolbarHelper::deleteList('Êtes-vous sûr ?', 'elu.delete');
+        ToolbarHelper::deleteList('Êtes-vous sûr de vouloir supprimer ?', 'elu.delete');
     }
 }

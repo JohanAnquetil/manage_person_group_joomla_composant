@@ -1,16 +1,12 @@
 <?php
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die;
 
 use Joomla\CMS\MVC\Controller\BaseController;
 
-class ElusController extends BaseController
+class ElusControllerElus extends BaseController
 {
     public function display($cachable = false, $urlparams = [])
     {
-        $input = \JFactory::getApplication()->input;
-        $view = $input->getCmd('view', 'elus');
-        $input->set('view', $view);
-
         parent::display($cachable, $urlparams);
     }
 }
