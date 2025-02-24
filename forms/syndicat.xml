@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-    <fieldset name="details" label="Détails du syndicat">
+    <fieldset name="details" label="Détails du syndicat à ajouter">
         <field
             name="id"
             type="hidden"
@@ -9,7 +9,7 @@
         <field
             name="nom"
             type="text"
-            label="Nom du syndicat"
+            label="Nom du syndicat."
             description="Entrez le nom du syndicat"
             class="input-xxlarge"
             size="40"
@@ -26,11 +26,15 @@
             cols="40"
         />
 
-        <field
+       <field
             name="photo"
             type="media"
             label="Photo"
-            directory="syndicats"
+            preview="true"
+            directory="images"
+            layout="joomla.form.field.media"
+            hide_none="false"
+            allowed_extensions="jpg,jpeg,png,gif,webp"
         />
 
         <field

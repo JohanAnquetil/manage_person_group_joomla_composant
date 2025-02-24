@@ -11,9 +11,9 @@ $app = Factory::getApplication();
 $input = $app->input;
 
 // Debug
-$app->enqueueMessage('Debug - View: ' . $input->get('view'), 'notice');
-$app->enqueueMessage('Debug - Layout: ' . $input->get('layout'), 'notice');
-$app->enqueueMessage('Debug - ID: ' . $input->get('id'), 'notice');
+// $app->enqueueMessage('Debug - View: ' . $input->get('view'), 'notice');
+// $app->enqueueMessage('Debug - Layout: ' . $input->get('layout'), 'notice');
+// $app->enqueueMessage('Debug - ID: ' . $input->get('id'), 'notice');
 
 
 $wa = $this->document->getWebAssetManager();
@@ -41,6 +41,7 @@ $id = $input->getInt('id', 0);
                         <?php echo $this->form->renderField('id'); ?>
                         <?php echo $this->form->renderField('nom'); ?>
                         <?php echo $this->form->renderField('description'); ?>
+                        <?php echo $this->form->renderField('photo'); ?>
                     </div>
                 </div>
             </div>

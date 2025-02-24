@@ -29,6 +29,9 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                             <th>
                                 <?php echo Text::_('Description'); ?>
                             </th>
+                            <th>
+                                <?php echo Text::_('Photo'); ?>
+                            </th>
                             <th scope="col" class="w-1 text-center">
                                 <?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
                             </th>
@@ -55,6 +58,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                                 <?php endif; ?>
                             </td>
                             <td><?php echo $this->escape($item->description); ?></td>
+                            <td><?php echo $this->escape($item->photo); ?></td>
                             <td class="text-center">
                                 <?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'syndicats.', true); ?>
                             </td>
