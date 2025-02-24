@@ -15,21 +15,4 @@ class ElusController extends AdminController
     {
         return parent::getModel($name, $prefix, $config);
     }
-
-    public function delete()
-    {
-        $input = \Joomla\CMS\Factory::getApplication()->input;
-        $ids = $input->get('cid', [], 'array');
-
-        if ($ids) {
-            $model = $this->getModel();
-            if ($model->delete($ids)) {
-                $this->setMessage('Élus supprimés avec succès.');
-            } else {
-                $this->setMessage('Échec de la suppression.', 'error');
-            }
-        }
-
-        $this->setRedirect('index.php?option=com_elus&view=elus');
-    }
 }
