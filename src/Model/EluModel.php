@@ -7,6 +7,7 @@ use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Table\Table;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\Database\ParameterType;
 
 class EluModel extends AdminModel
 {
@@ -106,5 +107,25 @@ class EluModel extends AdminModel
         }
 
         return $item;
+    }
+
+    public function publish(&$pks, $value = 1)
+    {
+        $user = Factory::getApplication()->getIdentity();
+        $db = $this->getDbo();
+        $query = $db->getQuery(true);
+
+        $query->update($db->quoteName('#__elus'))
+            ->set($db->quoteName('published') . ' = ' . (int) $value)
+            ->where($db->quoteName('id') . ' IN (' . implode(',', array_map('intval', $pks)) . ')');
+
+        try {
+            $db->setQuery($query)->execute();
+        } catch (\RuntimeException $e) {
+            $this->setError($e->getMessage());
+            return false;
+        }
+
+        return true;
     }
 }
