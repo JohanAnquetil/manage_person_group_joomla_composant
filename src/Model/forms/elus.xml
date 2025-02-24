@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="details" label="Détails de l'élu" description="Renseignez les informations concernant l'élu.">
+        
+        <!-- Syndicat -->
+        <field
+            name="syndicat"
+            type="text"
+            label="Syndicat"
+            description="Entrez le nom du syndicat (ex. : CGT, CFDT, FO)."
+            required="true"
+        />
+
+        <!-- Nom -->
+        <field
+            name="nom"
+            type="text"
+            label="Nom"
+            description="Nom de l'élu."
+            required="true"
+        />
+
+        <!-- Prénom -->
+        <field
+            name="prenom"
+            type="text"
+            label="Prénom"
+            description="Prénom de l'élu."
+            required="true"
+        />
+
+        <!-- Poste -->
+        <field
+            name="poste"
+            type="text"
+            label="Poste"
+            description="Poste occupé par l'élu (ex. : AMP, Educ, CD2A)."
+            required="true"
+        />
+
+        <!-- Établissement -->
+        <field
+            name="etablissement"
+            type="text"
+            label="Établissement"
+            description="Nom, code postal et ville de l'établissement."
+        />
+
+        <!-- Commissions -->
+        <field
+            name="commissions"
+            type="textarea"
+            label="Commissions"
+            description="Liste des commissions auxquelles l'élu participe (séparées par une virgule)."
+        />
+
+        <!-- Missions locales -->
+        <field
+            name="missions_local"
+            type="text"
+            label="Missions locales"
+            description="Indiquez les responsabilités locales (ex. : secrétaire, trésorier)."
+        />
+
+        <!-- CSEE -->
+        <field
+            name="cse_local"
+            type="text"
+            label="CSEE"
+            description="Nom du CSE local (ex. : CSE HDF 3)."
+        />
+
+        <!-- Coordonnées -->
+        <field
+            name="coordonnees"
+            type="text"
+            label="Coordonnées"
+            description="Numéro de téléphone ou email (facultatif)."
+        />
+
+        <!-- Photo -->
+        <field
+            name="photo"
+            type="media"
+            label="Photo"
+            description="Photo de l'élu (formats acceptés : JPG, PNG)."
+            required="false"
+            accept="image/*"
+            size="10"
+        />
+
+        <!-- Fichier joint -->
+        <field
+            name="fichier"
+            type="file"
+            label="Fichier joint"
+            description="Ajoutez un fichier complémentaire (PDF, DOC)."
+            accept=".pdf,.doc,.docx"
+            size="10"
+        />
+    </fieldset>
+</form>
