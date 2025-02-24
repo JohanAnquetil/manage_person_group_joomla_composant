@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="details" label="Détails du syndicat">
+        <field
+            name="id"
+            type="hidden"
+        />
+
+        <field
+            name="nom"
+            type="text"
+            label="Nom de la commission"
+            description="Entrez le nom de la commission"
+            class="input-xxlarge"
+            size="40"
+            required="true"
+        />
+
+        <field
+            name="description"
+            type="textarea"
+            label="Description"
+            description="Description du syndicat"
+            class="input-xxlarge"
+            rows="5"
+            cols="40"
+        />
+
+        <field
+            name="state"
+            type="list"
+            label="JSTATUS"
+            class="form-select-color-state"
+            size="1"
+            default="1"
+            >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+            <option value="2">JARCHIVED</option>
+            <option value="-2">JTRASHED</option>
+        </field>
+    </fieldset>
+</form>

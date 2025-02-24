@@ -1,13 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><form>    <fieldset name="details" label="Détails de l'élu">        <field             name="id"             type="hidden"        />        <field            name="nom"            type="text"            label="Nom"            required="true"            class="input-xxlarge"        />        <field            name="prenom"            type="text"            label="Prénom"            required="true"            class="input-xxlarge"        />        <field            name="poste"            type="text"            label="Poste"            required="true"            class="input-xxlarge"        />        <field            name="syndicat"            type="text"            label="Syndicat"            required="true"            class="input-xxlarge"        />        <field            name="etablissement"            type="text"
+<?xml version="1.0" encoding="utf-8"?><form>    
+        <fieldset 
+        name="details" 
+        label="Détails de l'élu">  
+
+        <field
+        name="id"             
+        type="hidden"        
+        />        
+
+        <field            
+            name="nom"            
+            type="text"            
+            label="Nom"            
+            required="true"            
+            class="input-xxlarge"        
+            />        
+            
+        <field            
+            name="prenom"            
+            type="text"            
+            label="Prénom"            
+            required="true"            
+            class="input-xxlarge"        
+            />        
+        
+        <field            
+            name="poste"            
+            type="text"            
+            label="Poste"            
+            required="true"            
+            class="input-xxlarge"      
+            /> 
+
+        <!-- <field
+            name="syndicat"            
+            type="text"            
+            label="Syndicat"            
+            required="true"            
+            class="input-xxlarge"        
+            />        
+        -->
+        
+        <field
+            name="syndicat"
+            type="sql"
+            label="Syndicat"
+            query="SELECT id, CONCAT(nom) AS nom FROM #__syndicats ORDER BY nom"
+            key_field="id"
+            value_field="nom"
+            required="true"
+            class="input-xxlarge"
+        />
+        
+        <field    
+            name="etablissement"            
+            type="text"
             label="Établissement"
             class="input-xxlarge"
         />
         <field
             name="commissions"
-            type="textarea"
+            type="sql"
             label="Commissions"
-            rows="5"
-            class="input-xxlarge"
+            query="SELECT id, nom FROM #__commissions ORDER BY nom"
+            key_field="id"
+            value_field="nom"
+            multiple="true"
+            layout="joomla.form.field.list-fancy-select"
+            class="advancedSelect"
+            required="false"
         />
         <field
             name="missions_local"

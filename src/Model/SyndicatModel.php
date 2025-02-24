@@ -8,7 +8,7 @@ use Joomla\CMS\Table\Table;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 
-class EluModel extends AdminModel
+class SyndicatModel extends AdminModel
 {
     protected $text_prefix = 'COM_ELUS';
 
@@ -27,8 +27,8 @@ class EluModel extends AdminModel
     public function getForm($data = array(), $loadData = true)
     {
         $form = $this->loadForm(
-            'com_elus.elu',
-            'elu',
+            'com_elus.syndicat',
+            'syndicat',
             ['control' => 'jform', 'load_data' => $loadData]
         );
 
@@ -45,14 +45,12 @@ class EluModel extends AdminModel
      */
     protected function loadFormData()
     {
-        // Charger les données depuis l'état de l'application
-        $data = Factory::getApplication()->getUserState('com_elus.edit.elu.data', array());
-        
-        if (empty($data)) {
+        // Utilise Factory::getApplication() directement
+        $data = Factory::getApplication()->getUserState('com_elus.edit.syndicat.data', []);
+
+        if (empty($data))
+        {
             $data = $this->getItem();
-            
-            // Debug pour voir ce qui est chargé
-            Factory::getApplication()->enqueueMessage('Loading data: ' . print_r($data, true), 'notice');
         }
 
         return $data;
@@ -61,9 +59,22 @@ class EluModel extends AdminModel
     /**
      * Obtenir la table associée.
      */
-    public function getTable($name = 'Elu', $prefix = 'Table', $options = [])
+    public function getTable($name = 'Syndicat', $prefix = 'Table', $options = [])
     {
-        return parent::getTable($name, $prefix, $options);
+        try {
+            $table = parent::getTable($name, $prefix, $options);
+            
+            if (!$table) {
+                Factory::getApplication()->enqueueMessage('Table non trouvée', 'error');
+                return false;
+            }
+            
+            return $table;
+        } catch (\Exception $e) {
+            Factory::getApplication()->enqueueMessage('Erreur getTable: ' . $e->getMessage(), 'error');
+            Factory::getApplication()->enqueueMessage('Trace: ' . $e->getTraceAsString(), 'error');
+            return false;
+        }
     }
 
     /**
@@ -79,13 +90,8 @@ class EluModel extends AdminModel
      */
     public function save($data)
     {
-        // Sauvegarder les commissions avant qu'elles ne soient converties en JSON
-        $commissions = isset($data['commissions']) ? (array) $data['commissions'] : [];
-        
-        // Convertir le tableau des commissions en JSON pour le stockage
-        $data['commissions'] = !empty($commissions) ? json_encode($commissions) : null;
-        
-        if (parent::save($data)) {
+        if (parent::save($data))
+        {
             Factory::getApplication()->enqueueMessage(Text::_('COM_ELUS_SAVE_SUCCESS'), 'message');
             return true;
         }
@@ -94,17 +100,5 @@ class EluModel extends AdminModel
             Factory::getApplication()->enqueueMessage(Text::_('COM_ELUS_SAVE_FAILED'), 'error');
             return false;
         }
-    }
-
-    public function getItem($pk = null)
-    {
-        $item = parent::getItem($pk);
-
-        // Convertir les commissions de JSON en tableau
-        if (!empty($item->commissions)) {
-            $item->commissions = json_decode($item->commissions, true);
-        }
-
-        return $item;
     }
 }

@@ -5,6 +5,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
+use Joomla\CMS\Factory;
 
 HTMLHelper::_('behavior.multiselect');
 HTMLHelper::_('bootstrap.tooltip');
@@ -86,10 +87,14 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                             </td>
                             <td><?php echo $this->escape($item->prenom); ?></td>
                             <td><?php echo $this->escape($item->poste); ?></td>
-                            <td><?php echo $this->escape($item->syndicat); ?></td>
+                            <td>
+                                <?php echo $this->escape($item->syndicat_nom ?? ''); ?>
+                            </td>
                             <td><?php echo $this->escape($item->etablissement); ?></td>
                             <td><?php echo $this->escape($item->cse_local); ?></td>
-                            <td><?php echo $this->escape($item->commissions); ?></td>
+                            <td>
+                                <?php echo $this->escape($item->commission_noms ?? ''); ?>
+                            </td>
                             <td><?php echo $this->escape($item->missions_local); ?></td>
                             <td><?php echo $this->escape($item->coordonnees); ?></td>
                             <td><?php echo $this->escape($item->photo); ?></td>
