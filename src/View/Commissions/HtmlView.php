@@ -18,7 +18,7 @@ class HtmlView extends BaseHtmlView
     public function display($tpl = null) 
     {
         // Debug pour voir si la vue est chargée
-        Factory::getApplication()->enqueueMessage('Debug: Vue commissions chargée', 'notice');
+        // Factory::getApplication()->enqueueMessage('Debug: Vue commissions chargée', 'notice');
 
         try {
             $this->items = $this->get('Items');

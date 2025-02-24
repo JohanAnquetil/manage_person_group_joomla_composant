@@ -55,6 +55,9 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                                 <?php echo Text::_('Coordonnées'); ?>
                             </th>
                             <th>
+                                <?php echo Text::_('Ville'); ?>
+                            </th>
+                            <th>
                                 <?php echo Text::_('Photo'); ?>
                             </th>
                             <th>
@@ -97,6 +100,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                             </td>
                             <td><?php echo $this->escape($item->missions_local); ?></td>
                             <td><?php echo $this->escape($item->coordonnees); ?></td>
+                            <td><?php echo $this->escape($item->ville); ?></td>
                             <td><?php echo $this->escape($item->photo); ?></td>
                             <td><?php echo $this->escape($item->fichier); ?></td>
                             <td class="d-none d-md-table-cell">

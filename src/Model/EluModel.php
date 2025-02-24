@@ -52,7 +52,7 @@ class EluModel extends AdminModel
             $data = $this->getItem();
             
             // Debug pour voir ce qui est chargé
-            Factory::getApplication()->enqueueMessage('Loading data: ' . print_r($data, true), 'notice');
+            // Factory::getApplication()->enqueueMessage('Loading data: ' . print_r($data, true), 'notice');
         }
 
         return $data;

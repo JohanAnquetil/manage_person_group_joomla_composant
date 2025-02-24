@@ -11,6 +11,9 @@ $app = Factory::getApplication();
 $input = $app->input;
 
 $wa = $this->document->getWebAssetManager();
+$wa->usePreset('choicesjs')
+   ->useScript('com_elus.ville-autocomplete')
+   ->useStyle('com_elus.ville-autocomplete-css');
 $wa->useScript('keepalive')
     ->useScript('form.validate');
 
@@ -42,6 +45,7 @@ $id = $input->getInt('id', 0);
                         <?php echo $this->form->renderField('missions_local'); ?>
                         <?php echo $this->form->renderField('cse_local'); ?>
                         <?php echo $this->form->renderField('coordonnees'); ?>
+                        <?php echo $this->form->renderField('ville'); ?>
                         <?php echo $this->form->renderField('photo'); ?>
                         <?php echo $this->form->renderField('fichier'); ?>
                     </div>

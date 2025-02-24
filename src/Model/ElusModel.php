@@ -24,6 +24,7 @@ class ElusModel extends ListModel
                 'missions_local', 'a.missions_local',
                 'cse_local', 'a.cse_local',
                 'coordonnees', 'a.coordonnees',
+                'ville', 'a.ville',
                 'photo', 'a.photo',
                 'fichier', 'a.fichier',
                 'published', 'a.published',
@@ -47,7 +48,7 @@ class ElusModel extends ListModel
         $query = $db->getQuery(true);
 
         // Ajoutons un log pour voir le contenu de commissions
-        Factory::getApplication()->enqueueMessage('Debug commissions SQL', 'notice');
+        // Factory::getApplication()->enqueueMessage('Debug commissions SQL', 'notice');
 
         $query->select(
             [
@@ -60,6 +61,7 @@ class ElusModel extends ListModel
                 $db->quoteName('a.commissions'),
                 $db->quoteName('a.missions_local'),
                 $db->quoteName('a.cse_local'),
+                $db->quoteName('a.ville'),
                 $db->quoteName('a.coordonnees'),
                 $db->quoteName('a.photo'),
                 $db->quoteName('a.fichier'),

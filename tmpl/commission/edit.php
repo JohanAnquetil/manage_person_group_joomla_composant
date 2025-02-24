@@ -11,9 +11,9 @@ $app = Factory::getApplication();
 $input = $app->input;
 
 // Debug
-$app->enqueueMessage('Debug - View: ' . $input->get('view'), 'notice');
-$app->enqueueMessage('Debug - Layout: ' . $input->get('layout'), 'notice');
-$app->enqueueMessage('Debug - ID: ' . $input->get('id'), 'notice');
+// $app->enqueueMessage('Debug - View: ' . $input->get('view'), 'notice');
+// $app->enqueueMessage('Debug - Layout: ' . $input->get('layout'), 'notice');
+// $app->enqueueMessage('Debug - ID: ' . $input->get('id'), 'notice');
 
 
 $wa = $this->document->getWebAssetManager();

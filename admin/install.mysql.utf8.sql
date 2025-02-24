@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `#__elus` (
     `missions_local` text,
     `cse_local` varchar(255),
     `coordonnees` text,
+    `ville` text,
     `photo` varchar(255),
     `fichier` varchar(255),
     `published` tinyint(1) NOT NULL DEFAULT '1',

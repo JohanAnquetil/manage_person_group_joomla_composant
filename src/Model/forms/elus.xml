@@ -78,6 +78,14 @@
             description="Numéro de téléphone ou email (facultatif)."
         />
 
+          <field
+            name="ville"
+            type="text"
+            label="Ville"
+            description="Ville."
+        />
+
+
         <!-- Photo -->
         <field
             name="photo"

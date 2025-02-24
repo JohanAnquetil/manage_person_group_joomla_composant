@@ -62,8 +62,8 @@ class CommissionModel extends AdminModel
     public function getTable($name = 'Commission', $prefix = 'Table', $options = [])
     {
         try {
-            Factory::getApplication()->enqueueMessage('Debug getTable - Name: ' . $name, 'notice');
-            Factory::getApplication()->enqueueMessage('Debug getTable - Prefix: ' . $prefix, 'notice');
+            // Factory::getApplication()->enqueueMessage('Debug getTable - Name: ' . $name, 'notice');
+            // Factory::getApplication()->enqueueMessage('Debug getTable - Prefix: ' . $prefix, 'notice');
             
             $table = parent::getTable($name, $prefix, $options);
             

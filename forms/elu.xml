@@ -83,12 +83,22 @@
             label="CSE Local"
             class="input-xxlarge"
         />
+
         <field
             name="coordonnees"
             type="textarea"
             label="Coordonnées"
-            rows="5"
+            description="Téléphone, email, adresse, etc."
+            rows="3"
             class="input-xxlarge"
+        />
+
+        <field
+            name="ville"
+            type="text"
+            label="Ville"
+            description="Saisissez le nom de la ville (min. 3 caractères)"
+            class="input-xxlarge ville-autocomplete"
         />
         <field
             name="photo"
