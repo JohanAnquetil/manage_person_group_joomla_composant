@@ -23,14 +23,14 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                             <th class="w-1 text-center">
                                 <?php echo HTMLHelper::_('grid.checkall'); ?>
                             </th>
+                            <th scope="col" class="w-1 text-center">
+                                <?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
+                            </th>
                             <th>
                                 <?php echo HTMLHelper::_('searchtools.sort', 'Nom', 'a.nom', $listDirn, $listOrder); ?>
                             </th>
                             <th>
                                 <?php echo Text::_('Description'); ?>
-                            </th>
-                            <th scope="col" class="w-1 text-center">
-                                <?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
                             </th>
                             <th scope="col" class="w-5 d-none d-md-table-cell text-center">
                                 <?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
@@ -45,6 +45,9 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                             <td class="text-center">
                                 <?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
                             </td>
+                            <td class="text-center">
+                                <?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'commissions.', true); ?>
+                            </td>
                             <td>
                                 <?php if ($canEdit) : ?>
                                     <a href="<?php echo Route::_('index.php?option=com_elus&task=commission.edit&id=' . $item->id); ?>">
@@ -55,9 +58,6 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                                 <?php endif; ?>
                             </td>
                             <td><?php echo $this->escape($item->description); ?></td>
-                            <td class="text-center">
-                                <?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'commissions.', true); ?>
-                            </td>
                             <td class="text-center">
                                 <?php echo $item->id; ?>
                             </td>

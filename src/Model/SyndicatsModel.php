@@ -31,11 +31,11 @@ class SyndicatsModel extends ListModel
 
         $query->select(
             $db->quoteName([
+                'a.published',
                 'a.id',
                 'a.nom',
                 'a.description',
-                'a.photo',
-                'a.published'  // Ajout du champ published
+                'a.photo'  // Ajout du champ published
             ])
         )->from($db->quoteName('#__syndicats', 'a'));
 

@@ -101,4 +101,26 @@ class SyndicatModel extends AdminModel
             return false;
         }
     }
+
+    /**
+     * Publier les éléments.
+     */
+    public function publish(&$pks, $value = 1)
+    {
+        $user = Factory::getApplication()->getIdentity();
+        $db = $this->getDbo();
+        $query = $db->getQuery(true);
+
+        $query->update($db->quoteName('#__syndicats'))
+            ->set($db->quoteName('published') . ' = ' . (int) $value)
+            ->where($db->quoteName('id') . ' IN (' . implode(',', array_map('intval', $pks)) . ')');
+
+        try {
+            $db->setQuery($query)->execute();
+            return true;
+        } catch (\RuntimeException $e) {
+            $this->setError($e->getMessage());
+            return false;
+        }
+    }
 }

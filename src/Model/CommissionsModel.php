@@ -13,10 +13,10 @@ class CommissionsModel extends ListModel
     {
         if (empty($config['filter_fields'])) {
             $config['filter_fields'] = array(
+                'published', 'a.published',
                 'id', 'a.id',
                 'nom', 'a.nom',
-                'description', 'a.description',
-                'published', 'a.published'  // Ajout du champ published
+                'description', 'a.description'
             );
         }
 
@@ -30,10 +30,10 @@ class CommissionsModel extends ListModel
 
         $query->select(
             $db->quoteName([
+                'a.published',
                 'a.id',
                 'a.nom',
-                'a.description',
-                'a.published'  // Ajout du champ published
+                'a.description'
             ])
         )->from($db->quoteName('#__commissions', 'a'));
 
