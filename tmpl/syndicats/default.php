@@ -6,6 +6,9 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
 
+$wa = $this->document->getWebAssetManager();
+$wa->registerAndUseStyle('com_elus.admin', 'com_elus/admin.css');
+
 HTMLHelper::_('behavior.multiselect');
 HTMLHelper::_('bootstrap.tooltip');
 
@@ -61,7 +64,15 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                                 <?php endif; ?>
                             </td>
                             <td><?php echo $this->escape($item->description); ?></td>
-                            <td><?php echo $this->escape($item->photo); ?></td>
+                            <td>
+                                <?php if ($item->photo) : ?>
+                                    <?php
+                                        $image = HTMLHelper::_('image', $item->photo, $this->escape($item->nom), 
+                                            ['class' => 'syndicat-logo', 'width' => '50', 'height' => '50']);
+                                        echo $image;
+                                    ?>
+                                <?php endif; ?>
+                            </td>
                             <td class="text-center">
                                 <?php echo $item->id; ?>
                             </td>
