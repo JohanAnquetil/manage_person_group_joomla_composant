@@ -5,7 +5,6 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
-use Joomla\CMS\Factory;
 
 $wa = $this->document->getWebAssetManager();
 $wa->registerAndUseStyle('com_elus.admin', 'com_elus/admin.css');
@@ -21,7 +20,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
     <div class="row">
         <div class="col-md-12">
             <div id="j-main-container" class="j-main-container">
-                <table class="table table-striped" id="elusList">
+                <table class="table table-striped" id="syndicatsList">
                     <thead>
                         <tr>
                             <th class="w-1 text-center">
@@ -34,87 +33,47 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                                 <?php echo HTMLHelper::_('searchtools.sort', 'Nom', 'a.nom', $listDirn, $listOrder); ?>
                             </th>
                             <th>
-                                <?php echo HTMLHelper::_('searchtools.sort', 'Prénom', 'a.prenom', $listDirn, $listOrder); ?>
-                            </th>
-                            <th>
-                                <?php echo HTMLHelper::_('searchtools.sort', 'Poste', 'a.poste', $listDirn, $listOrder); ?>
-                            </th>
-                            <th>
-                                <?php echo HTMLHelper::_('searchtools.sort', 'Syndicat', 'a.syndicat', $listDirn, $listOrder); ?>
-                            </th>
-                            <th>
-                                <?php echo Text::_('Établissement'); ?>
-                            </th>
-                            <th>
-                                <?php echo Text::_('CSE Local'); ?>
-                            </th>
-                            <th>
-                                <?php echo Text::_('Commissions'); ?>
-                            </th>
-                            <th>
-                                <?php echo Text::_('Missions Local'); ?>
-                            </th>
-                            <th>
-                                <?php echo Text::_('Coordonnées'); ?>
-                            </th>
-                            <th>
-                                <?php echo Text::_('Ville'); ?>
+                                <?php echo Text::_('Description'); ?>
                             </th>
                             <th>
                                 <?php echo Text::_('Photo'); ?>
                             </th>
-                            <th>
-                                <?php echo Text::_('Fichier'); ?>
-                            </th>
-                            <th class="w-5 d-none d-md-table-cell">
+                            <th scope="col" class="w-5 d-none d-md-table-cell text-center">
                                 <?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php foreach ($this->items as $i => $item) : 
-                        $canEdit = true; // À remplacer par la vérification des permissions
+                        $canEdit = true;
                     ?>
                         <tr class="row<?php echo $i % 2; ?>">
                             <td class="text-center">
                                 <?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
                             </td>
                             <td class="text-center">
-                                <?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'elus.', true); ?>
+                                <?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'syndicats.', true); ?>
                             </td>
                             <td>
                                 <?php if ($canEdit) : ?>
-                                    <a href="<?php echo Route::_('index.php?option=com_elus&task=elu.edit&id=' . $item->id); ?>">
+                                    <a href="<?php echo Route::_('index.php?option=com_elus&task=syndicat.edit&id=' . $item->id); ?>">
                                         <?php echo $this->escape($item->nom); ?>
                                     </a>
                                 <?php else : ?>
                                     <?php echo $this->escape($item->nom); ?>
                                 <?php endif; ?>
                             </td>
-                            <td><?php echo $this->escape($item->prenom); ?></td>
-                            <td><?php echo $this->escape($item->poste); ?></td>
-                            <td>
-                                <?php echo $this->escape($item->syndicat_nom ?? ''); ?>
-                            </td>
-                            <td><?php echo $this->escape($item->etablissement); ?></td>
-                            <td><?php echo $this->escape($item->cse_local); ?></td>
-                            <td>
-                                <?php echo $this->escape($item->commission_noms ?? ''); ?>
-                            </td>
-                            <td><?php echo $this->escape($item->missions_local); ?></td>
-                            <td><?php echo $this->escape($item->coordonnees); ?></td>
-                            <td><?php echo $this->escape($item->ville); ?></td>
+                            <td><?php echo $this->escape($item->description); ?></td>
                             <td>
                                 <?php if ($item->photo) : ?>
                                     <?php
-                                        $image = HTMLHelper::_('image', $item->photo, $this->escape($item->nom . ' ' . $item->prenom), 
+                                        $image = HTMLHelper::_('image', $item->photo, $this->escape($item->nom), 
                                             ['class' => 'syndicat-logo', 'width' => '50', 'height' => '50']);
                                         echo $image;
                                     ?>
                                 <?php endif; ?>
                             </td>
-                            <td><?php echo $this->escape($item->fichier); ?></td>
-                            <td class="d-none d-md-table-cell">
+                            <td class="text-center">
                                 <?php echo $item->id; ?>
                             </td>
                         </tr>

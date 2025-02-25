@@ -6,13 +6,13 @@ defined('_JEXEC') or die;
 use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
-use Joomla\Utilities\ArrayHelper;  // Ajout de l'import manquant
+use Joomla\Utilities\ArrayHelper;
 
-class ElusController extends AdminController
+class CommissionsController extends AdminController
 {
     protected $text_prefix = 'COM_ELUS';
 
-    public function getModel($name = 'Elu', $prefix = 'Administrator', $config = ['ignore_request' => true])
+    public function getModel($name = 'Commission', $prefix = 'Administrator', $config = ['ignore_request' => true])
     {
         return parent::getModel($name, $prefix, $config);
     }
@@ -33,10 +33,10 @@ class ElusController extends AdminController
             $cid = ArrayHelper::toInteger($cid);
             
             if ($model->publish($cid, $value)) {
-                $this->setMessage(Text::plural('COM_ELUS_N_ITEMS_' . ($value ? 'PUBLISHED' : 'UNPUBLISHED'), count($cid)));
+                $this->setMessage(Text::plural('COM_ELUS_N_COMMISSIONS_' . ($value ? 'PUBLISHED' : 'UNPUBLISHED'), count($cid)));
             }
         }
 
-        $this->setRedirect(Route::_('index.php?option=com_elus&view=elus', false));
+        $this->setRedirect(Route::_('index.php?option=com_elus&view=commissions', false));
     }
 }

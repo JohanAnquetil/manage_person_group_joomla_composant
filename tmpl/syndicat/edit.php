@@ -10,10 +10,13 @@ use Joomla\CMS\Factory;
 $app = Factory::getApplication();
 $input = $app->input;
 
+// Debug
+// $app->enqueueMessage('Debug - View: ' . $input->get('view'), 'notice');
+// $app->enqueueMessage('Debug - Layout: ' . $input->get('layout'), 'notice');
+// $app->enqueueMessage('Debug - ID: ' . $input->get('id'), 'notice');
+
+
 $wa = $this->document->getWebAssetManager();
-$wa->usePreset('choicesjs')
-   ->useScript('com_elus.ville-autocomplete')
-   ->useStyle('com_elus.ville-autocomplete-css');
 $wa->useScript('keepalive')
     ->useScript('form.validate');
 
@@ -23,31 +26,22 @@ $id = $input->getInt('id', 0);
 ?>
 
 <form action="<?php echo Route::_('index.php?option=com_elus&layout=' . $layout . $tmpl . '&id=' . $id); ?>"
-    method="post" name="adminForm" id="elu-form" class="form-validate">
+    method="post" name="adminForm" id="syndicat-form" class="form-validate">
 
     <?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
     <div class="main-card">
         <?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
 
-        <?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('Détails')); ?>
+        <?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('Détails du syndicat')); ?>
         <div class="row">
             <div class="col-lg-9">
                 <div class="card">
                     <div class="card-body">
                         <?php echo $this->form->renderField('id'); ?>
                         <?php echo $this->form->renderField('nom'); ?>
-                        <?php echo $this->form->renderField('prenom'); ?>
-                        <?php echo $this->form->renderField('poste'); ?>
-                        <?php echo $this->form->renderField('syndicat'); ?>
-                        <?php echo $this->form->renderField('etablissement'); ?>
-                        <?php echo $this->form->renderField('commissions'); ?>
-                        <?php echo $this->form->renderField('missions_local'); ?>
-                        <?php echo $this->form->renderField('cse_local'); ?>
-                        <?php echo $this->form->renderField('coordonnees'); ?>
-                        <?php echo $this->form->renderField('ville'); ?>
+                        <?php echo $this->form->renderField('description'); ?>
                         <?php echo $this->form->renderField('photo'); ?>
-                        <?php echo $this->form->renderField('fichier'); ?>
                     </div>
                 </div>
             </div>

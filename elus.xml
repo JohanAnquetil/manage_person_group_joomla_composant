@@ -42,10 +42,16 @@
         </files>
 
         <!-- Menu principal -->
-        <menu>COM_ELUS</menu>
+        <menu>Gestion du CSEC</menu>
         <submenu>
+            <menu link="option=com_elus&amp;view=cpanel">Tableau de bord</menu>
             <menu link="option=com_elus&amp;view=elus">Liste des élus</menu>
             <menu link="option=com_elus&amp;task=elu.add">Ajouter un élu</menu>
+            <menu link="option=com_elus&amp;view=syndicats">Liste des syndicats</menu>
+            <menu link="option=com_elus&amp;task=syndicat.add">Ajouter un syndicat</menu>
+            <menu link="option=com_elus&amp;view=commissions">Liste des commissions</menu>
+            <menu link="option=com_elus&amp;task=commission.add">Ajouter une commission</menu>
+            
         </submenu>
 
         <!-- Fichiers de langues -->

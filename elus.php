@@ -22,10 +22,8 @@ $input  = $app->input;
 $task   = $input->get('task', 'display');
 
 // Chargement du contrôleur principal (DisplayController)
-$controller = BaseController::getInstance('Display', ['base_path' => JPATH_COMPONENT_ADMINISTRATOR]);
-
-// Exécution de la tâche
-$controller->execute($task);
+$controller = BaseController::getInstance('Elus');
+$controller->execute(Factory::getApplication()->input->get('task', 'display'));
 $controller->redirect();
 
 // Enregistrement des services pour Joomla 5

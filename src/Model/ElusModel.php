@@ -24,6 +24,7 @@ class ElusModel extends ListModel
                 'missions_local', 'a.missions_local',
                 'cse_local', 'a.cse_local',
                 'coordonnees', 'a.coordonnees',
+                'ville', 'a.ville',
                 'photo', 'a.photo',
                 'fichier', 'a.fichier',
                 'published', 'a.published',
@@ -46,31 +47,48 @@ class ElusModel extends ListModel
         $db = $this->getDbo();
         $query = $db->getQuery(true);
 
-        // Sélection des colonnes
+        // Ajoutons un log pour voir le contenu de commissions
+        // Factory::getApplication()->enqueueMessage('Debug commissions SQL', 'notice');
+
         $query->select(
-            $db->quoteName([
-                'a.id',
-                'a.nom',
-                'a.prenom',
-                'a.poste',
-                'a.syndicat',
-                'a.etablissement',
-                'a.commissions',
-                'a.missions_local',
-                'a.cse_local',
-                'a.coordonnees',
-                'a.photo',
-                'a.fichier',
-                'a.published',
-                'a.ordering',
-                'a.checked_out',
-                'a.checked_out_time',
-                'a.created',
-                'a.created_by',
-                'a.modified',
-                'a.modified_by'
-            ])
-        )->from($db->quoteName('#__elus', 'a'));
+            [
+                $db->quoteName('a.id'),
+                $db->quoteName('a.nom'),
+                $db->quoteName('a.prenom'),
+                $db->quoteName('a.poste'),
+                $db->quoteName('a.syndicat'),  // Ajout du champ syndicat
+                $db->quoteName('a.etablissement'),
+                $db->quoteName('a.commissions'),
+                $db->quoteName('a.missions_local'),
+                $db->quoteName('a.cse_local'),
+                $db->quoteName('a.ville'),
+                $db->quoteName('a.coordonnees'),
+                $db->quoteName('a.photo'),
+                $db->quoteName('a.fichier'),
+                $db->quoteName('a.published'),
+                $db->quoteName('a.ordering'),
+                $db->quoteName('s.nom', 'syndicat_nom'),  // Nom du syndicat
+                $db->quoteName('a.commissions', 'commissions_raw'), // Pour déboguer
+                // Version modifiée de la sous-requête pour les commissions
+                '(SELECT GROUP_CONCAT(' . $db->quoteName('c.nom') . ' SEPARATOR \', \') 
+                  FROM ' . $db->quoteName('#__commissions') . ' AS c 
+                  INNER JOIN (
+                    SELECT REPLACE(TRIM(BOTH \'"\' FROM j.value), \'[\', \'\') AS commission_id
+                    FROM JSON_TABLE(
+                        IF(a.commissions IS NULL, \'[]\', a.commissions),
+                        \'$[*]\' COLUMNS (value VARCHAR(50) PATH \'$\')
+                    ) j
+                  ) tmp ON tmp.commission_id = c.id
+                ) AS commission_noms'
+            ]
+        )
+        ->from($db->quoteName('#__elus', 'a'))
+        // Jointure avec la table syndicats
+        ->join(
+            'LEFT',
+            $db->quoteName('#__syndicats', 's'),
+            $db->quoteName('s.id') . ' = ' . $db->quoteName('a.syndicat')
+        );
 
         // Filtrer par recherche
         $search = $this->getState('filter.search');
