@@ -28,7 +28,6 @@
             name="poste"            
             type="text"            
             label="Poste"            
-            required="true"            
             class="input-xxlarge"      
             /> 
 
@@ -58,6 +57,15 @@
             label="Établissement"
             class="input-xxlarge"
         />
+        
+        <field
+            name="ville"
+            type="text"
+            label="Ville"
+            description="Saisissez le nom de la ville (min. 3 caractères)"
+            class="input-xxlarge ville-autocomplete"
+        />
+
         <field
             name="commissions"
             type="sql"
@@ -70,26 +78,36 @@
             class="advancedSelect"
             required="false"
         />
+         <field
+            name="cse_local"
+            type="text"
+            label="Nom du CSE local"
+            class="input-xxlarge"
+        />
+
         <field
             name="missions_local"
             type="textarea"
-            label="Missions Local"
+            label="Missions au CSE local"
             rows="5"
             class="input-xxlarge"
         />
-        <field
-            name="cse_local"
-            type="text"
-            label="CSE Local"
+         <field
+            name="missions_central"
+            type="textarea"
+            label="Missions au CSE Central"
+            rows="5"
             class="input-xxlarge"
         />
+       
 
         <field
             name="telephone"
             type="textarea"
             label="Téléphone"
+            row = "1"
             description="Optionnel, indiquez le numéro de téléphone de l'élu"
-            class="input-xxlarge"
+            class="input-medium"
         />
         <field
             name="mail"
@@ -105,14 +123,6 @@
             description="Optionnel, indiquez l'adresse de l'élu."
             class="input-xxlarge"
         />
-
-        <field
-            name="ville"
-            type="text"
-            label="Ville"
-            description="Saisissez le nom de la ville (min. 3 caractères)"
-            class="input-xxlarge ville-autocomplete"
-        />
         <field
             name="photo"
             type="media"
@@ -125,6 +135,17 @@
             label="Fichier"
             accept="application/pdf"
         />
+        <field
+            name="is_delegue"
+            type="radio"
+            label="Délégué Syndical"
+            description="L'élu est-il délégué syndical ?"
+            class="btn-group btn-group-yesno"
+            default="0"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
         <field
             name="published"
             type="list"

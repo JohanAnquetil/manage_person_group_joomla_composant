@@ -46,10 +46,13 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                                 <?php echo Text::_('Établissement'); ?>
                             </th>
                             <th>
-                                <?php echo Text::_('CSE Local'); ?>
+                                <?php echo Text::_('Commissions'); ?>
                             </th>
                             <th>
-                                <?php echo Text::_('Commissions'); ?>
+                                <?php echo Text::_('Missions CSE Central'); ?>
+                            </th>
+                            <th>
+                                <?php echo Text::_('CSE Local'); ?>
                             </th>
                             <th>
                                 <?php echo Text::_('Missions Local'); ?>
@@ -71,6 +74,9 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                             </th>
                             <th>
                                 <?php echo Text::_('Fichier'); ?>
+                            </th>
+                            <th>
+                                <?php echo Text::_('Délégué syndical'); ?>
                             </th>
                             <th class="w-5 d-none d-md-table-cell">
                                 <?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
@@ -103,15 +109,17 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                                 <?php echo $this->escape($item->syndicat_nom ?? ''); ?>
                             </td>
                             <td><?php echo $this->escape($item->etablissement); ?></td>
-                            <td><?php echo $this->escape($item->cse_local); ?></td>
                             <td>
                                 <?php echo $this->escape($item->commission_noms ?? ''); ?>
                             </td>
+                            <td><?php echo $this->escape($item->missions_cse_central); ?></td>
+                            <td><?php echo $this->escape($item->cse_local); ?></td>
                             <td><?php echo $this->escape($item->missions_local); ?></td>
                             <td><?php echo $this->escape($item->mail); ?></td>
                             <td><?php echo $this->escape($item->telephone); ?></td>
                             <td><?php echo $this->escape($item->adresse); ?></td>
                             <td><?php echo $this->escape($item->ville); ?></td>
+                            <td><?php echo $this->escape($item->is_delegue); ?></td>
                             <td>
                                 <?php if ($item->photo) : ?>
                                     <?php

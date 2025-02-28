@@ -60,6 +60,7 @@ class ElusModel extends ListModel
                 $db->quoteName('a.commissions'),
                 $db->quoteName('a.missions_local'),
                 $db->quoteName('a.cse_local'),
+                $db->quoteName('a.missions_cse_central'),
                 $db->quoteName('a.mail'),
                 $db->quoteName('a.telephone'),
                 $db->quoteName('a.adresse'),
@@ -67,6 +68,7 @@ class ElusModel extends ListModel
                 $db->quoteName('a.photo'),
                 $db->quoteName('a.fichier'),
                 $db->quoteName('a.published'),
+                $db->quoteName('a.is_delegue'),
                 $db->quoteName('a.ordering'),
                 $db->quoteName('s.nom', 'syndicat_nom'),  // Nom du syndicat
                 $db->quoteName('a.commissions', 'commissions_raw'), // Pour déboguer
@@ -119,6 +121,10 @@ class ElusModel extends ListModel
      */
     protected function populateState($ordering = 'a.nom', $direction = 'ASC')
     {
+        parent::populateState($ordering, $direction);
+        
+        $this->setState('list.limit', 100);
+
         $app = Factory::getApplication();
 
         // Filtre de recherche
@@ -128,7 +134,5 @@ class ElusModel extends ListModel
         // Filtre de publication
         $published = $app->getUserStateFromRequest($this->context . '.filter.published', 'filter_published', '');
         $this->setState('filter.published', $published);
-
-        parent::populateState($ordering, $direction);
     }
 }

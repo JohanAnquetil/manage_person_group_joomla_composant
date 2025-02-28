@@ -35,21 +35,24 @@ $id = $input->getInt('id', 0);
             <div class="col-lg-9">
                 <div class="card">
                     <div class="card-body">
+                        <h2><?php echo Text::_('Détails'); ?></h2>
                         <?php echo $this->form->renderField('id'); ?>
                         <?php echo $this->form->renderField('nom'); ?>
                         <?php echo $this->form->renderField('prenom'); ?>
                         <?php echo $this->form->renderField('poste'); ?>
                         <?php echo $this->form->renderField('syndicat'); ?>
                         <?php echo $this->form->renderField('etablissement'); ?>
-                        <?php echo $this->form->renderField('commissions'); ?>
-                        <?php echo $this->form->renderField('missions_local'); ?>
-                        <?php echo $this->form->renderField('cse_local'); ?>
+                        <?php echo $this->form->renderField('ville'); ?>
                         <?php echo $this->form->renderField('adresse'); ?>
                         <?php echo $this->form->renderField('telephone'); ?>
                         <?php echo $this->form->renderField('mail'); ?>
-                        <?php echo $this->form->renderField('ville'); ?>
+                        <?php echo $this->form->renderField('missions_central'); ?>
+                        <?php echo $this->form->renderField('commissions'); ?>
+                        <?php echo $this->form->renderField('cse_local'); ?>
+                        <?php echo $this->form->renderField('missions_local'); ?>
                         <?php echo $this->form->renderField('photo'); ?>
                         <?php echo $this->form->renderField('fichier'); ?>
+                        <?php echo $this->form->renderField('is_delegue'); ?>
                     </div>
                 </div>
             </div>
