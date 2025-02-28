@@ -44,7 +44,9 @@ $id = $input->getInt('id', 0);
                         <?php echo $this->form->renderField('commissions'); ?>
                         <?php echo $this->form->renderField('missions_local'); ?>
                         <?php echo $this->form->renderField('cse_local'); ?>
-                        <?php echo $this->form->renderField('coordonnees'); ?>
+                        <?php echo $this->form->renderField('adresse'); ?>
+                        <?php echo $this->form->renderField('telephone'); ?>
+                        <?php echo $this->form->renderField('mail'); ?>
                         <?php echo $this->form->renderField('ville'); ?>
                         <?php echo $this->form->renderField('photo'); ?>
                         <?php echo $this->form->renderField('fichier'); ?>

@@ -5,8 +5,16 @@
     <creationDate>2025-02-19</creationDate>
     <description>Composant Joomla pour la gestion des élus avec commissions.</description>
 
-
     <namespace path="src">Joomla\Component\Elus</namespace>
+
+
+        <!-- Public front end files -->
+    <files folder="site">
+        <folder>src</folder>
+        <folder>tmpl</folder>
+        <filename>elus.php</filename>
+    </files>
+
 
           <!-- Installation SQL -->
         <install>

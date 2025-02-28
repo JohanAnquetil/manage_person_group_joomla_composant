@@ -23,7 +23,9 @@ class ElusModel extends ListModel
                 'commissions', 'a.commissions',
                 'missions_local', 'a.missions_local',
                 'cse_local', 'a.cse_local',
-                'coordonnees', 'a.coordonnees',
+                'mail', 'a.mail',
+                'telephone', 'a.telephone',
+                'adresse', 'a.adresse',
                 'ville', 'a.ville',
                 'photo', 'a.photo',
                 'fichier', 'a.fichier',
@@ -47,22 +49,21 @@ class ElusModel extends ListModel
         $db = $this->getDbo();
         $query = $db->getQuery(true);
 
-        // Ajoutons un log pour voir le contenu de commissions
-        // Factory::getApplication()->enqueueMessage('Debug commissions SQL', 'notice');
-
         $query->select(
             [
                 $db->quoteName('a.id'),
                 $db->quoteName('a.nom'),
                 $db->quoteName('a.prenom'),
                 $db->quoteName('a.poste'),
-                $db->quoteName('a.syndicat'),  // Ajout du champ syndicat
+                $db->quoteName('a.syndicat'),
                 $db->quoteName('a.etablissement'),
                 $db->quoteName('a.commissions'),
                 $db->quoteName('a.missions_local'),
                 $db->quoteName('a.cse_local'),
+                $db->quoteName('a.mail'),
+                $db->quoteName('a.telephone'),
+                $db->quoteName('a.adresse'),
                 $db->quoteName('a.ville'),
-                $db->quoteName('a.coordonnees'),
                 $db->quoteName('a.photo'),
                 $db->quoteName('a.fichier'),
                 $db->quoteName('a.published'),

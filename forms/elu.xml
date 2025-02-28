@@ -85,11 +85,24 @@
         />
 
         <field
-            name="coordonnees"
+            name="telephone"
             type="textarea"
-            label="Coordonnées"
-            description="Téléphone, email, adresse, etc."
-            rows="3"
+            label="Téléphone"
+            description="Optionnel, indiquez le numéro de téléphone de l'élu"
+            class="input-xxlarge"
+        />
+        <field
+            name="mail"
+            type="textarea"
+            label="Email"
+            description="Optionnel, indiquez l'adresse email de l'élu"
+            class="input-xxlarge"
+        />
+        <field
+            name="adresse"
+            type="textarea"
+            label="Adresse"
+            description="Optionnel, indiquez l'adresse de l'élu."
             class="input-xxlarge"
         />
 

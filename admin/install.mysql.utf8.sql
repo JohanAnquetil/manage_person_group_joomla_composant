@@ -43,11 +43,13 @@ CREATE TABLE IF NOT EXISTS `#__elus` (
     `poste` varchar(255) NOT NULL,
     `syndicat` int(11) NOT NULL,  -- Changé en INT pour la clé étrangère
     `etablissement` varchar(255),
-    `commissions` text,  -- Garde TEXT car c'est du JSON pour multiple commissions
+    `commissions` text,
     `missions_local` text,
     `cse_local` varchar(255),
-    `coordonnees` text,
-    `ville` text,
+    `telephone` varchar(255),
+    `mail` varchar(255),
+    `adresse` varchar(255),
+    `ville` varchar(255),
     `photo` varchar(255),
     `fichier` varchar(255),
     `published` tinyint(1) NOT NULL DEFAULT '1',

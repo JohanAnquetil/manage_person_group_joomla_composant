@@ -55,7 +55,13 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                                 <?php echo Text::_('Missions Local'); ?>
                             </th>
                             <th>
-                                <?php echo Text::_('Coordonnées'); ?>
+                                <?php echo Text::_('Mail'); ?>
+                            </th>
+                            <th>
+                                <?php echo Text::_('Téléphone'); ?>
+                            </th>
+                            <th>
+                                <?php echo Text::_('Adresse'); ?>
                             </th>
                             <th>
                                 <?php echo Text::_('Ville'); ?>
@@ -73,7 +79,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                     </thead>
                     <tbody>
                     <?php foreach ($this->items as $i => $item) : 
-                        $canEdit = true; // À remplacer par la vérification des permissions
+                        $canEdit = true;
                     ?>
                         <tr class="row<?php echo $i % 2; ?>">
                             <td class="text-center">
@@ -102,7 +108,9 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                                 <?php echo $this->escape($item->commission_noms ?? ''); ?>
                             </td>
                             <td><?php echo $this->escape($item->missions_local); ?></td>
-                            <td><?php echo $this->escape($item->coordonnees); ?></td>
+                            <td><?php echo $this->escape($item->mail); ?></td>
+                            <td><?php echo $this->escape($item->telephone); ?></td>
+                            <td><?php echo $this->escape($item->adresse); ?></td>
                             <td><?php echo $this->escape($item->ville); ?></td>
                             <td>
                                 <?php if ($item->photo) : ?>
