@@ -45,3 +45,12 @@ return new class implements ServiceProviderInterface
         );
     }
 };
+
+// SQL query to alter the table
+// $db = Factory::getDbo();
+// $query = $db->getQuery(true);
+// $query->alterTable('#__elus')
+//       ->addColumn('latitude', 'DECIMAL(10,8)')
+//       ->addColumn('longitude', 'DECIMAL(11,8)');
+// $db->setQuery($query);
+// $db->execute();

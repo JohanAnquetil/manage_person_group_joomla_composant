@@ -67,6 +67,22 @@
         />
 
         <field
+            name="latitude"
+            type="hidden"
+            label="Latitude"
+            description="Latitude de la ville"
+            filter="float"
+        />
+        
+        <field
+            name="longitude"
+            type="hidden"
+            label="Longitude"
+            description="Longitude de la ville"
+            filter="float"
+        />
+
+        <field
             name="commissions"
             type="sql"
             label="Commissions"

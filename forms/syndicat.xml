@@ -9,7 +9,7 @@
         <field
             name="nom"
             type="text"
-            label="Nom du syndicat."
+            label="Nom du syndicat"
             description="Entrez le nom du syndicat"
             class="input-xxlarge"
             size="40"
@@ -17,6 +17,16 @@
         />
 
         <field
+            name="description"
+            type="textarea"
+            label="Description"
+            description="Description du syndicat"
+            class="input-xxlarge"
+            rows="5"
+            cols="40"
+        />
+
+         <field
             name="description"
             type="textarea"
             label="Description"
@@ -35,6 +45,14 @@
             layout="joomla.form.field.media"
             hide_none="false"
             allowed_extensions="jpg,jpeg,png,gif,webp"
+        />
+
+             <field
+            name="couleur"
+            type="color"
+            label="Couleur du marqueur pour la cartographie"
+            description="Choisissez la couleur pour les marqueurs de ce syndicat"
+            default="#808080"
         />
 
         <field

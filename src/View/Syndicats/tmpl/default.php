@@ -16,6 +16,7 @@ HTMLHelper::_('behavior.multiselect');
                 <th width="1%"><?php echo Text::_('ID'); ?></th>
                 <th><?php echo Text::_('Nom'); ?></th>
                 <th><?php echo Text::_('Description'); ?></th>
+                <th><?php echo Text::_('couleur'); ?></th>
                 <th width="1%"><?php echo Text::_('Éditer'); ?></th>
             </tr>
         </thead>
@@ -27,6 +28,7 @@ HTMLHelper::_('behavior.multiselect');
                         <td><?php echo $item->id; ?></td>
                         <td><?php echo $item->nom; ?></td>
                         <td><?php echo $item->description; ?></td>
+                        <td><?php echo $item->couleur; ?></td>
                         <td>
                             <a href="<?php echo Route::_('index.php?option=com_elus&task=syndicat.edit&id=' . $item->id); ?>">
                                 <?php echo Text::_('Modifier'); ?>

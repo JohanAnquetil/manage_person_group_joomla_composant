@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `#__syndicats` (
     `nom` VARCHAR(255) NOT NULL,
     `description` TEXT NOT NULL,
     `photo` varchar(255),
+    `couleur` VARCHAR(7) DEFAULT '#808080';
     `published` TINYINT(1) NOT NULL DEFAULT 1,
     `checked_out` INT(11),
     `checked_out_time` DATETIME,
@@ -55,6 +56,8 @@ CREATE TABLE IF NOT EXISTS `#__elus` (
     `fichier` varchar(255),
     `is_delegue` tinyint(1) DEFAULT '0',
     `published` tinyint(1) NOT NULL DEFAULT '1',
+    `latitude` DECIMAL(10, 8),
+    `longitude` DECIMAL(11, 8),
     `state` tinyint(1) NOT NULL DEFAULT '1',
     `ordering` int(11) NOT NULL DEFAULT '0',
     `checked_out` int(11) NOT NULL DEFAULT '0',
