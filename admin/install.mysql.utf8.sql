@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `#__syndicats` (
     `nom` VARCHAR(255) NOT NULL,
     `description` TEXT NOT NULL,
     `photo` varchar(255),
+    `couleur` VARCHAR(7) DEFAULT '#808080';
     `published` TINYINT(1) NOT NULL DEFAULT 1,
     `checked_out` INT(11),
     `checked_out_time` DATETIME,

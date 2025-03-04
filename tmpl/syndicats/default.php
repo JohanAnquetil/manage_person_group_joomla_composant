@@ -38,6 +38,9 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                             <th>
                                 <?php echo Text::_('Photo'); ?>
                             </th>
+                            <th>
+                                <?php echo Text::_('Couleur'); ?>
+                            </th>
                             <th scope="col" class="w-5 d-none d-md-table-cell text-center">
                                 <?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
                             </th>
@@ -73,6 +76,8 @@ $listDirn = $this->escape($this->state->get('list.direction'));
                                     ?>
                                 <?php endif; ?>
                             </td>
+                            <td><?php echo $this->escape($item->couleur); ?></td>
+                            <td>
                             <td class="text-center">
                                 <?php echo $item->id; ?>
                             </td>

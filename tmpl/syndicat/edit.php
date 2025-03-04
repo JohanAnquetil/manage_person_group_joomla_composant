@@ -41,6 +41,7 @@ $id = $input->getInt('id', 0);
                         <?php echo $this->form->renderField('id'); ?>
                         <?php echo $this->form->renderField('nom'); ?>
                         <?php echo $this->form->renderField('description'); ?>
+                        <?php echo $this->form->renderField('couleur'); ?>
                         <?php echo $this->form->renderField('photo'); ?>
                     </div>
                 </div>

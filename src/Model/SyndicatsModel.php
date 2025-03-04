@@ -16,6 +16,7 @@ class SyndicatsModel extends ListModel
                 'id', 'a.id',
                 'nom', 'a.nom',
                 'description', 'a.description',
+                'couleur', 'a.couleur',
                 'photo', 'a.photo',
                 'published', 'a.published'  // Ajout du champ published
             );
@@ -35,6 +36,7 @@ class SyndicatsModel extends ListModel
                 'a.id',
                 'a.nom',
                 'a.description',
+                'couleur', 'a.couleur',
                 'a.photo'  // Ajout du champ published
             ])
         )->from($db->quoteName('#__syndicats', 'a'));
